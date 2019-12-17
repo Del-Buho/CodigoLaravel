@@ -9,8 +9,6 @@ jobs:
     - uses: actions/checkout@v1
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
-    - name: Generate key
-      run: php artisan key:generate
     - name: Create Database
       run: |
         mkdir -p database
