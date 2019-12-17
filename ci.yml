@@ -9,4 +9,4 @@ jobs:
       - name: Listado
         run: ls
       - name: Mostrar
-        run: cat Senasag
+        run: cat Senasag/resources/views/buscador.blade.php
