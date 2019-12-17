@@ -1,0 +1,12 @@
+name: laravel
+on: [push]
+jobs: 
+  laravel:
+    name: codigo
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v1
+      - name: Listado
+        run: ls
+      - name: Mostrar
+        run: cat Senasag
