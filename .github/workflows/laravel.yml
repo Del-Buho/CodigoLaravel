@@ -1,22 +1,20 @@
-name: Laravel
-
+name: Continuous Integration
 on: [push]
-
 jobs:
   laravel-tests:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - name: Copy .env
+    - name: Copiar ENV
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
-    - name: Generate key
+    - name: Composer
+      run: which composer
+    - name: Instalar dependencias (PHP Vendor)
+      working-directory: ./touristApp/
+      run: composer install
+    - name: Llaves
+      working-directory: ./touristApp/
       run: php artisan key:generate
-    - name: Create Database
-      run: |
-        mkdir -p database
-        touch database/database.sqlite
-    - name: Execute tests (Unit and Feature tests) via PHPUnit
-      env:
-        DB_CONNECTION: sqlite
-        DB_DATABASE: database/database.sqlite
+    - name: Ejecutar test con PHPUnit
+      working-directory: ./touristApp/
       run: vendor/bin/phpunit
