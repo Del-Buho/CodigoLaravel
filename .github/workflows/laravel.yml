@@ -11,7 +11,7 @@ jobs:
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: Generate key
       run: php artisan key:generate
-    - name: Create Database
+    - name: Create Databases
       run: |
         mkdir -p database
         touch database/database.sqlite
